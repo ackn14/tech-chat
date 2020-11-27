@@ -1,7 +1,7 @@
 <template>
   <transition appear>
     <div
-      class="z-10 max-w-sm h-screen w-screen fixed top-0 flex flex-col items-center justify-center modal-wrap"
+      class="z-10 h-screen w-screen fixed top-0 flex flex-col items-center justify-center modal-wrap"
     >
       <!-- ここにModalの中身が入る -->
       <slot />

@@ -4,7 +4,7 @@
       class="flex items-center flex-col h-48 mt-20 w-4/5 p-4 bg-white shadow rounded"
     >
       <div class="w-full border-b pb-2 mb-10">
-        <p class="text-center">ログイン</p>
+        <p class="text-center">トップページ</p>
       </div>
       <form class="w-full" @submit.prevent="onSubmit">
         <button
@@ -19,12 +19,12 @@
 </template>
 <script>
 export default {
-  middleware: ['checkLogin'],
+  middleware: ["checkLogin"],
   methods: {
     onSubmit() {
-      const provider = new this.$firebase.auth.GoogleAuthProvider()
-      this.$fireAuth.signInWithRedirect(provider)
+      const provider = new this.$firebase.auth.GoogleAuthProvider();
+      this.$fireAuth.signInWithRedirect(provider);
     }
   }
-}
+};
 </script>

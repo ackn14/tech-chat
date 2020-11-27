@@ -1,18 +1,21 @@
 /* purgecss start ignore */
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
 /* purgecss end ignore */
-@import 'tailwindcss/utilities';
+@import "tailwindcss/utilities";
 
 html {
-  max-width: 24rem;
-  min-width: 20rem;
+  width: 100%;
   margin: 0 auto;
   background-color: #000;
 }
 
 body {
   background-color: #f3faff;
+}
+
+a {
+  cursor: pointer;
 }
 
 .modal-wrap {
