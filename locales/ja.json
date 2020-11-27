@@ -1,0 +1,11 @@
+{
+  "menus": {
+    "aboutPortfolio": "ポートフォリオについて",
+    "profile": "プロフィール"
+  },
+
+  "title": {
+    "signup": "会員登録",
+    "login": "ログイン"
+  }
+}

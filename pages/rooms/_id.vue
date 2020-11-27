@@ -28,7 +28,7 @@
     </div>
     <form
       @submit.prevent="onSubmit"
-      class="fixed bottom-0 bg-white w-full max-w-sm flex py-4 border-t border-gray-300"
+      class="fixed bottom-0 bg-white w-full flex py-4 border-t border-gray-300"
     >
       <textarea
         v-model="form.message.val"
@@ -48,9 +48,9 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex'
+import { mapGetters, mapMutations } from "vuex";
 export default {
-  middleware: ['checkAuth'],
+  middleware: ["checkAuth"],
   data() {
     return {
       form: {
@@ -59,45 +59,45 @@ export default {
         }
       },
       unsubscribe: null
-    }
+    };
   },
 
   computed: {
-    ...mapGetters('chats', ['chats']),
+    ...mapGetters("chats", ["chats"]),
     isValidateError() {
-      return !this.form.message.val
+      return !this.form.message.val;
     }
   },
 
   async asyncData({ store, params }) {
-    const roomId = params.id
-    const unsubscribe = await store.dispatch('chats/subscribe', { roomId })
+    const roomId = params.id;
+    const unsubscribe = await store.dispatch("chats/subscribe", { roomId });
     return {
       unsubscribe
-    }
+    };
   },
 
   destroyed() {
-    this.$store.dispatch('chats/clear')
-    if (this.unsubscribe) this.unsubscribe()
+    this.$store.dispatch("chats/clear");
+    if (this.unsubscribe) this.unsubscribe();
   },
 
   methods: {
-    ...mapMutations('alert', ['setMessage']),
+    ...mapMutations("alert", ["setMessage"]),
 
     isMyChat(userId) {
-      const { uid } = this.$fireAuth.currentUser
-      return userId === uid
+      const { uid } = this.$fireAuth.currentUser;
+      return userId === uid;
     },
 
     async onSubmit() {
-      if (this.isValidateError) return
+      if (this.isValidateError) return;
 
-      const user = await this.$user()
+      const user = await this.$user();
 
       // 未ログインの場合
-      if (!user) this.$router.push('/login')
-      const roomId = this.$route.params.id
+      if (!user) this.$router.push("/login");
+      const roomId = this.$route.params.id;
 
       // 登録データを準備
       const chat = {
@@ -106,30 +106,30 @@ export default {
         iconImageUrl: user.iconImageUrl,
         body: this.form.message.val,
         createdAt: this.$firebase.firestore.FieldValue.serverTimestamp()
-      }
+      };
 
       try {
         await this.$firestore
-          .collection('rooms')
+          .collection("rooms")
           .doc(roomId)
-          .collection('chats')
-          .add(chat)
-        this.resetForm()
-        this.scrollBottom()
+          .collection("chats")
+          .add(chat);
+        this.resetForm();
+        this.scrollBottom();
       } catch (e) {
-        this.setMessage({ message: '登録に失敗しました。' })
+        this.setMessage({ message: "登録に失敗しました。" });
       }
     },
 
     scrollBottom() {
-      const element = document.documentElement
-      const bottom = element.scrollHeight - element.clientHeight
-      window.scroll(0, bottom)
+      const element = document.documentElement;
+      const bottom = element.scrollHeight - element.clientHeight;
+      window.scroll(0, bottom);
     },
 
     resetForm() {
-      this.form.message.val = null
+      this.form.message.val = null;
     }
   }
-}
+};
 </script>
