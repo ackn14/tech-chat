@@ -1,6 +1,9 @@
 <template>
   <div>
-    ポートフォリオURL GitHubURL
+    <a href="/messageRoom" target="_blank" rel="noopener noreferrer"
+      >ポートフォリオURL</a
+    >
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
   </div>
 </template>
 

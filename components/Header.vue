@@ -12,13 +12,21 @@
       </template>
 
       <h1 class="text-2xl font-semibold text-white">チャット</h1>
+      <signupLink />
+      <loginLink />
     </div>
   </header>
 </template>
 
 <script>
 import firebase from "firebase";
+import signupLink from "~/components/beforeLogin/signupLink";
+import loginLink from "~/components/beforeLogin/loginLink";
 export default {
+  components: {
+    signupLink,
+    loginLink
+  },
   middleware({ store, redirect }) {
     if (!store.$auth.loggedIn) {
       redirect("/login");
