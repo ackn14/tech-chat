@@ -67,21 +67,21 @@ export default {
         name: {
           label: "名前",
           val: null,
-          errorMessage: null,
+          errorMessage: null
         },
         imageUrl: {
           label: "アイコン画像",
           val: null,
-          errorMessage: null,
-        },
-      },
+          errorMessage: null
+        }
+      }
     };
   },
 
   computed: {
     isValidateError() {
       return this.form.name.errorMessage || this.form.imageUrl.errorMessage;
-    },
+    }
   },
 
   methods: {
@@ -99,7 +99,7 @@ export default {
 
       reader.addEventListener("load", () => {
         this.upload({
-          localImageFile: files[0],
+          localImageFile: files[0]
         });
       });
     },
@@ -164,15 +164,18 @@ export default {
 
       if (this.isValidateError) return;
       try {
-        await this.$firestore.collection("users").doc(user.uid).set({
-          name: this.form.name.val,
-          iconImageUrl: this.form.imageUrl.val,
-        });
+        await this.$firestore
+          .collection("users")
+          .doc(user.uid)
+          .set({
+            name: this.form.name.val,
+            iconImageUrl: this.form.imageUrl.val
+          });
         this.$router.push("/");
       } catch (e) {
         this.setMessage({ message: "登録に失敗しました。" });
       }
-    },
-  },
+    }
+  }
 };
 </script>

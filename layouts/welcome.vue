@@ -72,11 +72,7 @@ export default {
           title: "aboutPortfolio",
           subtitle: "このサイトはポートフォリオ紹介サイトです"
         },
-        { title: "profile", subtitle: "プロフィール" },
-        { title: "profile", subtitle: "プロフィール" },
-        { title: "profile", subtitle: "プロフィール" },
-        { title: "profile", subtitle: "プロフィール" },
-        { title: "profile", subtitle: "プロフィール" }
+        { title: "profile", subtitle: "このサイトを作ったのはこんな人です" }
       ]
     };
   }

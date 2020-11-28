@@ -15,7 +15,9 @@
     "firebase": "^7.15.5",
     "nuxt": "^2.0.0",
     "nuxt-i18n": "^6.15.4",
-    "nuxt-validate": "^1.0.1"
+    "nuxt-validate": "^1.0.1",
+    "vue": "^2.6.12",
+    "vue-template-compiler": "^2.6.12"
   },
   "devDependencies": {
     "@firebase/testing": "^0.20.5",
